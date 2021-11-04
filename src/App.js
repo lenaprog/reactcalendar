@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 import Day from './components/Day';
-import Month from './components/Month';
+//import Month from './components/Month';
 import Header from './components/Header';
 
 
@@ -22,17 +22,30 @@ class App extends React.Component {
     const current = this.state.months.filter((month, index) => index === this.state.currentMonth)
     return <Header current={current[0]} />
 
-
-
   }
+
+ 
+  
+  
+
+
+
+
+  getWeekDays = () => {
+    const days = this.state.week.map(weekday => this.state.week)
+    return <Day day={days[0]}/>
+    
+  }
+  
 
   render() {
 
-    console.log(this.getCurrentMonth())
     return (
       <div className="App">
         <h2>Calendar</h2>
         {this.getCurrentMonth()}
+        {this.getWeekDays()}
+        
 
 
       </div>
