@@ -18,40 +18,40 @@ class App extends React.Component {
       currentMonth: new Date().getMonth(),
       activeMonth: ""
     }
-    
-    /*this.clickNextMonth = this.clickNextMonth.bind(this)*/
-    this.getCurrentMonth = this.getCurrentMonth.bind(this)
-  }
-
-  componentDidMount () {
-    this.getCurrentMonth()
   }
 
 
-  getCurrentMonth = () => {
+  getActiveMonth = () => {
     const current = this.state.months.filter((month, index) => index === this.state.currentMonth)
     console.log("current", current[0])
     this.setState ({activeMonth: current[0]})
-
   }
 
- clickNextMonth= () => {
-   this.setState({currentMonth: this.state.currentMonth+1});
+ clickNextMonth= async() => {
+   if (this.state.currentMonth < 11){
+    await this.setState({currentMonth: this.state.currentMonth+1})
+    this.getActiveMonth()
+  }
+   else {
+     await this.setState({currentMonth: 0})
+   this.getActiveMonth()
+  }
  }
 
- clickPrevMonth = () => {
-   this.setState({currentMonth: this.state.currentMonth-1});
+ clickPrevMonth = async() => {
+   if (this.state.currentMonth > 0){
+    await this.setState({currentMonth: this.state.currentMonth-1});
+    this.getActiveMonth()
+   }
+  else {
+    await this.setState({currentMonth:11})
+   this.getActiveMonth()
  }
+}
 
-  getWeekDays = () => {
-    return <Day day={this.state.week}/>
-    
+  componentDidMount () {
+    this.getActiveMonth()
   }
-
-  getDates = () => {
-    return <Dates date={this.state.dates} />
-  }
-  
 
   render() {
 
@@ -63,8 +63,8 @@ class App extends React.Component {
         <Header active={this.state.activeMonth}/>
         <ButtonPrev onButtonClick={this.clickPrevMonth} />
         <ButtonNext onButtonClick={this.clickNextMonth}/>
-        {this.getWeekDays()}
-        {this.getDates()}
+        <Day day={this.state.week}/>
+        <Dates date={this.state.dates} />
 
       </div>
     );
