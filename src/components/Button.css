@@ -1,0 +1,19 @@
+.ButtonPrev {
+  color: green;
+  margin-left: 500px;
+  border: none;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  font-size: 20px;
+}
+
+.ButtonNext {
+  color: green;
+  margin-right: 500px;
+  border: none;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  font-size: 20px;
+}

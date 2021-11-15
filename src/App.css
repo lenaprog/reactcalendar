@@ -1,12 +1,13 @@
 .App {
   text-align: center;
+  font-family: "Courier New", Courier, monospace;
 }
 
-.App h1 {
-  font-family: "Courier New", Courier, monospace;
-  color: brown;
+.App h2 {
+  color: rgb(17, 76, 94);
+  margin-top: 50px;
 }
 
 .Day {
-  width: 100%;
+  text-transform: uppercase;
 }
